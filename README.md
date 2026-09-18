@@ -1,7 +1,7 @@
 # agaza 🇪🇬
 
-[![npm version](https://img.shields.io/npm/v/@mostafaabbas98/agaza.svg)](https://www.npmjs.com/package/@mostafaabbas98/agaza)
-[![license](https://img.shields.io/npm/l/@mostafaabbas98/agaza.svg)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/@mostafaabbas/agaza.svg)](https://www.npmjs.com/package/@mostafaabbas/agaza)
+[![license](https://img.shields.io/npm/l/@mostafaabbas/agaza.svg)](./LICENSE)
 
 > النهارده أجازة؟ — Is it agaza today?
 
@@ -10,13 +10,13 @@ A tiny, zero-dependency package that tells you whether a date falls on the Egypt
 ## Install
 
 ```bash
-npm install @mostafaabbas98/agaza
+npm install @mostafaabbas/agaza
 ```
 
 ## Usage
 
 ```js
-import { isAgaza } from "@mostafaabbas98/agaza";
+import { isAgaza } from "@mostafaabbas/agaza";
 
 // Is today agaza?
 isAgaza(); // true on Friday & Saturday, false otherwise
@@ -48,7 +48,7 @@ isAgaza(new Date(2026, 8, 15)); // false (Tuesday)
 
 - [ ] `timeUntilAgaza()`: how much time is left until the next agaza
 - [ ] Cairo timezone support
-- [ ] CLI: `npx @mostafaabbas98/agaza`
+- [ ] CLI: `npx @mostafaabbas/agaza`
 
 ## License
 

@@ -16,7 +16,7 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "name": "@mostafaabbas98/agaza",
+  "name": "@mostafaabbas/agaza",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mostafaabbas98/agaza.git"
