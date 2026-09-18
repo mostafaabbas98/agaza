@@ -1,0 +1,29 @@
+{
+  "author": "Mostafa Abbas",
+  "bugs": {
+    "url": "https://github.com/mostafaabbas98/agaza/issues"
+  },
+  "description": "Check if a date falls on the Egyptian weekend (Friday/Saturday)",
+  "files": [
+    "index.js"
+  ],
+  "homepage": "https://github.com/mostafaabbas98/agaza#readme",
+  "keywords": [
+    "agaza",
+    "egypt",
+    "weekend",
+    "date"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@mostafaabbas98/agaza",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mostafaabbas98/agaza.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "version": "0.0.1"
+}
