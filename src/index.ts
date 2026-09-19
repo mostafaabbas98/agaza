@@ -1,4 +1,4 @@
-export function isAgaza(date = new Date()) {
+export function isAgaza(date: Date = new Date()): boolean {
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
     throw new Error("Invalid date");
   }

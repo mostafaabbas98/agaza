@@ -1,11 +1,13 @@
 # agaza 🇪🇬
 
 [![npm version](https://img.shields.io/npm/v/@mostafaabbas/agaza.svg)](https://www.npmjs.com/package/@mostafaabbas/agaza)
-[![license](https://img.shields.io/npm/l/@mostafaabbas/agaza.svg)](./LICENSE)
+[![license](https://img.shields.io/npm/l/@mostafaabbas/agaza.svg)](https://github.com/mostafaabbas98/agaza/blob/main/LICENSE)
 
 > النهارده أجازة؟ — Is it agaza today?
 
 A tiny, zero-dependency package that tells you whether a date falls on the Egyptian weekend (**Friday or Saturday**).
+
+Written in TypeScript, so type definitions are included out of the box (no `@types` package needed).
 
 ## Install
 
@@ -42,7 +44,13 @@ isAgaza(new Date(2026, 8, 15)); // false (Tuesday)
 
 - The day is calculated in the **local timezone** of the machine running the code. If your server is not in Egypt, the result may differ from Cairo time around midnight.
 - This package checks the **weekly weekend only**. Official public holidays are not included (yet 👀).
-- ESM only. Requires Node.js 18 or later.
+- **ESM only.** Requires Node.js 18 or later. If you're using CommonJS, load it with a dynamic import:
+
+  ```js
+  import("@mostafaabbas/agaza").then(({ isAgaza }) => {
+    console.log(isAgaza());
+  });
+  ```
 
 ## Roadmap
 
@@ -52,4 +60,4 @@ isAgaza(new Date(2026, 8, 15)); // false (Tuesday)
 
 ## License
 
-[MIT](./LICENSE) © Mostafa Abbas
+[MIT](https://github.com/mostafaabbas98/agaza/blob/main/LICENSE) © Mostafa Abbas
