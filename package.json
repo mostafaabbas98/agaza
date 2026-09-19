@@ -35,7 +35,8 @@
     "build": "npm run clean && tsc -p ./tsconfig.json",
     "clean": "del-cli ./lib",
     "prepack": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test",
+    "pretest": "npm run build"
   },
   "type": "module",
   "types": "./lib/index.d.ts",
