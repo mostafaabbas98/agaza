@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@mostafaabbas/agaza.svg)](https://www.npmjs.com/package/@mostafaabbas/agaza)
 [![license](https://img.shields.io/npm/l/@mostafaabbas/agaza.svg)](https://github.com/mostafaabbas98/agaza/blob/main/LICENSE)
+[![CI](https://github.com/mostafaabbas98/agaza/actions/workflows/ci.yml/badge.svg)](https://github.com/mostafaabbas98/agaza/actions/workflows/ci.yml)
 
 > النهارده أجازة؟ — Is it agaza today?
 
