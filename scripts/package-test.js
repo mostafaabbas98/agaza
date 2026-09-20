@@ -21,7 +21,10 @@ try {
   const packOutput = run(
     "npm pack --json --ignore-scripts --pack-destination " + tempDir,
   );
-  const filename = JSON.parse(packOutput)["@mostafaabbas/agaza"].filename;
+  const packed = JSON.parse(packOutput);
+  const { filename } = Array.isArray(packed)
+    ? packed[0]
+    : Object.values(packed)[0];
   console.log("Tarball:", filename);
 
   run("npm init -y", tempDir);
