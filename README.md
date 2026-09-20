@@ -44,7 +44,7 @@ isAgaza(new Date(2026, 8, 15)); // false (Tuesday)
 
 - The day is calculated in the **local timezone** of the machine running the code. If your server is not in Egypt, the result may differ from Cairo time around midnight.
 - This package checks the **weekly weekend only**. Official public holidays are not included (yet 👀).
-- **ESM only.** Requires Node.js 18 or later. If you're using CommonJS, load it with a dynamic import:
+- **ESM only.** Requires Node.js 20 or later. If you're using CommonJS, load it with a dynamic import:
 
   ```js
   import("@mostafaabbas/agaza").then(({ isAgaza }) => {

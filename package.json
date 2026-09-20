@@ -6,7 +6,6 @@
   "description": "Check if a date falls on the Egyptian weekend (Friday/Saturday)",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
-    "del-cli": "^7.0.0",
     "publint": "^0.3.24",
     "typescript": "^7.0.2"
   },
@@ -35,17 +34,17 @@
   },
   "scripts": {
     "build": "npm run clean && tsc -p ./tsconfig.json",
-    "clean": "del-cli ./lib",
+    "clean": "node -e \"require(\\\"node:fs\\\").rmSync(\\\"lib\\\",{recursive:true,force:true})\"",
     "prepack": "npm run build",
     "test": "node --test test/*.test.js",
     "pretest": "npm run build",
     "test:package": "node ./scripts/package-test.js",
-    "lint:package": "publint && attw --pack ."
+    "lint:package": "publint && attw --pack . --profile esm-only"
   },
   "type": "module",
   "types": "./lib/index.d.ts",
   "version": "0.1.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }
