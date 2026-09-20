@@ -37,9 +37,9 @@
     "build": "npm run clean && tsc -p ./tsconfig.json",
     "clean": "del-cli ./lib",
     "prepack": "npm run build",
-    "test": "node --test",
+    "test": "node --test test/*.test.js",
     "pretest": "npm run build",
-    "test:package": "node ./scripts/test-package.js",
+    "test:package": "node ./scripts/package-test.js",
     "lint:package": "publint && attw --pack ."
   },
   "type": "module",
