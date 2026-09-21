@@ -47,10 +47,13 @@ try {
   writeFileSync(
     join(tempDir, "test.ts"),
     `
-      import { isAgaza } from "@mostafaabbas/agaza";
+      import { isAgaza, timeUntilAgaza } from "@mostafaabbas/agaza";
       const result: boolean = isAgaza(new Date(2026, 8, 18)); // true
+      const remaining: number = timeUntilAgaza(new Date(2026, 8, 18));
       // @ts-expect-error
       isAgaza("hello");
+      // @ts-expect-error
+      timeUntilAgaza("hello");
     `,
   );
 
