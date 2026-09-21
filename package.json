@@ -7,6 +7,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
     "publint": "^0.3.24",
+    "semantic-release": "^25.0.9",
     "typescript": "^7.0.2"
   },
   "exports": {
@@ -44,7 +45,11 @@
   },
   "type": "module",
   "types": "./lib/index.d.ts",
-  "version": "0.2.0",
+  "version": "0.0.0-semantically-released",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "engines": {
     "node": ">=20"
   }
