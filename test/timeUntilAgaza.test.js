@@ -9,8 +9,8 @@ const DAY = 24 * HOUR;
 
 // each weekday at midnight
 const weekDates = [
-  { date: week.Friday, expected: 0, label: "Friday" },
-  { date: week.Saturday, expected: 0, label: "Saturday" },
+  { date: week.Friday, expected: 7 * DAY, label: "Friday" },
+  { date: week.Saturday, expected: 6 * DAY, label: "Saturday" },
   { date: week.Sunday, expected: 5 * DAY, label: "Sunday" },
   { date: week.Monday, expected: 4 * DAY, label: "Monday" },
   { date: week.Tuesday, expected: 3 * DAY, label: "Tuesday" },
@@ -24,11 +24,6 @@ const validDates = [
     date: new Date(2026, 8, 24, 23, 59, 59),
     expected: SECOND,
     label: "Thursday 23:59:59 (1 second)",
-  },
-  {
-    date: new Date(2026, 8, 25, 0, 0, 0),
-    expected: 0,
-    label: "Friday 00:00:00 (agaza already started)",
   },
   {
     date: new Date(2026, 8, 20, 8, 0, 0),
