@@ -45,10 +45,14 @@ describe("timeUntilAgaza()", () => {
   describe("throw", () => {
     invalidDates.forEach((invalidDate) => {
       it(`throws an error if the date is ${invalidDate.label}`, () => {
-        assert.throws(() => timeUntilAgaza(invalidDate.value), {
-          name: "Error",
-          message: "Invalid date",
-        });
+        assert.throws(
+          () => timeUntilAgaza(invalidDate.value),
+          invalidDate.error,
+        );
+      });
+
+      it(`${invalidDate.error.name} is an instance of Error`, () => {
+        assert.ok(new invalidDate.error() instanceof Error);
       });
     });
   });

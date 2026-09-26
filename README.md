@@ -46,7 +46,7 @@ nextAgaza(new Date(2026, 8, 15)); // Fri Sep 18 2026 00:00 (Tuesday)
 
 **Returns:** `boolean`: `true` if the date is a Friday or Saturday.
 
-**Throws:** an error if `date` is not a `Date` object or is an invalid date (for example `new Date("not a date")`).
+**Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date (for example `new Date("not a date")`). Both extend `Error`.
 
 ### `timeUntilAgaza(date?)`
 
@@ -56,7 +56,7 @@ nextAgaza(new Date(2026, 8, 15)); // Fri Sep 18 2026 00:00 (Tuesday)
 
 **Returns:** `number`: milliseconds until the next agaza starts (Friday 00:00). Always greater than zero: during agaza it counts down to **next** week's Friday. Use `isAgaza()` to check whether the given date is already agaza.
 
-**Throws:** an error if `date` is not a `Date` object or is an invalid date.
+**Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date.
 
 ### `nextAgaza(date?)`
 
@@ -66,7 +66,7 @@ nextAgaza(new Date(2026, 8, 15)); // Fri Sep 18 2026 00:00 (Tuesday)
 
 **Returns:** `Date`: a new `Date` for the start of the next agaza (Friday 00:00, local time). The date you pass in is never modified. During agaza it returns next week's Friday.
 
-**Throws:** an error if `date` is not a `Date` object or is an invalid date.
+**Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date.
 
 ## Notes
 
