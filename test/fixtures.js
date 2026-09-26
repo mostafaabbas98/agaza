@@ -10,9 +10,13 @@ export const week = {
 };
 
 export const invalidDates = [
-  { value: "not a date", label: "a string" },
-  { value: new Date("not a date"), label: "an invalid date object" },
-  { value: null, label: "null" },
-  { value: 123, label: "a number" },
-  { value: {}, label: "an object" },
+  { value: "not a date", label: "a string", error: TypeError },
+  {
+    value: new Date("not a date"),
+    label: "an invalid date object",
+    error: RangeError,
+  },
+  { value: null, label: "null", error: TypeError },
+  { value: 123, label: "a number", error: TypeError },
+  { value: {}, label: "an object", error: TypeError },
 ];

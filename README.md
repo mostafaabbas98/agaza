@@ -19,7 +19,7 @@ npm install @mostafaabbas/agaza
 ## Usage
 
 ```js
-import { isAgaza, timeUntilAgaza } from "@mostafaabbas/agaza";
+import { isAgaza, timeUntilAgaza, nextAgaza } from "@mostafaabbas/agaza";
 
 // Is today agaza?
 isAgaza(); // true on Friday & Saturday, false otherwise
@@ -30,7 +30,10 @@ isAgaza(new Date(2026, 8, 15)); // false (Tuesday)
 
 // How long until agaza? (milliseconds)
 timeUntilAgaza(new Date(2026, 8, 24, 12, 0)); // 43200000 (Thursday noon: 12 hours left)
-timeUntilAgaza(new Date(2026, 8, 18)); // 0 (Friday: it's already agaza)
+timeUntilAgaza(new Date(2026, 8, 18)); // 604800000 (Friday: a whole week until the next one)
+
+// When does the next agaza start?
+nextAgaza(new Date(2026, 8, 15)); // Fri Sep 18 2026 00:00 (Tuesday)
 ```
 
 ## API
@@ -43,7 +46,7 @@ timeUntilAgaza(new Date(2026, 8, 18)); // 0 (Friday: it's already agaza)
 
 **Returns:** `boolean`: `true` if the date is a Friday or Saturday.
 
-**Throws:** an error if `date` is not a `Date` object or is an invalid date (for example `new Date("not a date")`).
+**Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date (for example `new Date("not a date")`). Both extend `Error`.
 
 ### `timeUntilAgaza(date?)`
 
@@ -51,9 +54,19 @@ timeUntilAgaza(new Date(2026, 8, 18)); // 0 (Friday: it's already agaza)
 | --------- | ------ | ------------ | ---------------------------- |
 | `date`    | `Date` | `new Date()` | The date to count down from. |
 
-**Returns:** `number`: milliseconds until the next agaza starts (Friday 00:00), or `0` if the date is already agaza.
+**Returns:** `number`: milliseconds until the next agaza starts (Friday 00:00). Always greater than zero: during agaza it counts down to **next** week's Friday. Use `isAgaza()` to check whether the given date is already agaza.
 
-**Throws:** an error if `date` is not a `Date` object or is an invalid date.
+**Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date.
+
+### `nextAgaza(date?)`
+
+| Parameter | Type   | Default      | Description                  |
+| --------- | ------ | ------------ | ---------------------------- |
+| `date`    | `Date` | `new Date()` | The date to look ahead from. |
+
+**Returns:** `Date`: a new `Date` for the start of the next agaza (Friday 00:00, local time). The date you pass in is never modified. During agaza it returns next week's Friday.
+
+**Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date.
 
 ## Notes
 
@@ -71,7 +84,7 @@ timeUntilAgaza(new Date(2026, 8, 18)); // 0 (Friday: it's already agaza)
 ## Roadmap
 
 - [x] `timeUntilAgaza()`: how much time is left until the next agaza
-- [ ] `nextAgaza()`: the date when the next agaza starts
+- [x] `nextAgaza()`: the date when the next agaza starts
 - [ ] Cairo timezone support
 - [ ] CLI: `npx @mostafaabbas/agaza`
 
