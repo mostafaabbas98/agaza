@@ -21,12 +21,12 @@ const weekDates = [
 const validDates = [
   ...weekDates,
   {
-    date: new Date(2026, 8, 24, 23, 59, 59),
+    date: new Date("2026-09-24T23:59:59+03:00"),
     expected: SECOND,
     label: "Thursday 23:59:59 (1 second)",
   },
   {
-    date: new Date(2026, 8, 20, 8, 0, 0),
+    date: new Date("2026-09-20T08:00:00+03:00"),
     expected: 4 * DAY + 16 * HOUR,
     label: "Sunday 08:00 (almost 5 days)",
   },
