@@ -22,3 +22,50 @@ export function assertDate(date: unknown): asserts date is Date {
   if (Number.isNaN(date.getTime()))
     throw new RangeError("agaza: received an invalid Date");
 }
+
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const cairoFormatter = new Intl.DateTimeFormat("en-US", {
+  timeZone: "Africa/Cairo",
+  hourCycle: "h23",
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  weekday: "short",
+});
+
+// { year, month, day, hour, minute, second, weekday }
+export function cairoParts(date: Date) {
+  const parts: Record<string, string> = {};
+  for (const { type, value } of cairoFormatter.formatToParts(date)) {
+    parts[type] = value;
+  }
+
+  return {
+    year: Number(parts.year),
+    month: Number(parts.month),
+    day: Number(parts.day),
+    hour: Number(parts.hour),
+    minute: Number(parts.minute),
+    second: Number(parts.second),
+    weekday: WEEKDAYS.indexOf(parts.weekday),
+  };
+}
+
+// How far Cairo's wall clock is ahead of UTC at `date`, in ms (+2h or +3h).
+export function cairoOffset(date: Date): number {
+  const parts = cairoParts(date);
+  const wallAsUTC = Date.UTC(
+    parts.year,
+    parts.month - 1,
+    parts.day,
+    parts.hour,
+    parts.minute,
+    parts.second,
+  );
+  const instant = Math.floor(date.getTime() / 1000) * 1000;
+  return wallAsUTC - instant;
+}
