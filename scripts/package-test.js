@@ -1,5 +1,5 @@
 import { execSync } from "node:child_process";
-import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -61,6 +61,27 @@ try {
     "npx tsc --noEmit --strict --module nodenext --moduleResolution nodenext test.ts",
     tempDir,
   );
+
+  const cliJson = JSON.parse(run("npx agaza --json", tempDir));
+  if (typeof cliJson.isAgaza !== "boolean") {
+    throw new Error("Error in CLI: --json did not return an isAgaza boolean");
+  }
+  if (cliJson.timeZone !== "Africa/Cairo") {
+    throw new Error("Error in CLI: --json did not report the Cairo time zone");
+  }
+
+  const installed = JSON.parse(
+    readFileSync(
+      join(tempDir, "node_modules/@mostafaabbas/agaza/package.json"),
+      "utf8",
+    ),
+  ).version;
+  const reported = run("npx agaza --version", tempDir).trim();
+  if (reported !== installed) {
+    throw new Error(
+      `Error in CLI: --version printed "${reported}", expected "${installed}"`,
+    );
+  }
 
   console.log("\n✅ Package test passed");
 } finally {

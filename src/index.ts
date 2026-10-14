@@ -4,7 +4,7 @@ import {
   WEEKEND_DAYS,
   cairoParts,
   cairoOffset,
-} from "./helper.js";
+} from "./helper.ts";
 
 /**
  * Check if a date falls on the Egyptian weekend (Friday/Saturday).
