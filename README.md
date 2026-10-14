@@ -10,6 +10,8 @@ A tiny, zero-dependency package that tells you whether a date falls on the Egypt
 
 Written in TypeScript, so type definitions are included out of the box (no `@types` package needed).
 
+It also ships a command line tool, so you can ask from your terminal without installing anything.
+
 ## Install
 
 ```bash
@@ -71,6 +73,68 @@ nextAgaza().toLocaleString("en-EG", { timeZone: "Africa/Cairo" });
 
 **Throws:** a `TypeError` if `date` is not a `Date` object, or a `RangeError` if it is an invalid date.
 
+## CLI
+
+Ask without installing anything:
+
+```bash
+npx @mostafaabbas/agaza
+```
+
+Or install it globally and use the short name:
+
+```bash
+npm install -g @mostafaabbas/agaza
+agaza
+```
+
+```console
+$ agaza
+Not yet - 1 day, 1 hour until Friday
+
+$ agaza 2026-10-14
+No - Wednesday, 14 Oct 2026 is not agaza. Next agaza is on Friday, 16 Oct 2026
+
+$ agaza 2026-12-25
+Yes - Friday, 25 Dec 2026 is agaza 🎉
+
+$ agaza --lang ar
+لسه لأ - يوم وساعة لحد يوم الجمعة
+```
+
+### Arguments and options
+
+| Argument / option | Short | Description                                                      |
+| ----------------- | ----- | ---------------------------------------------------------------- |
+| `[date]`          |       | A day to check, as `YYYY-MM-DD`. Omit it to ask about right now. |
+| `--lang <en\|ar>` | `-l`  | Language of the human-readable output. Default: `en`.            |
+| `--json`          | `-j`  | Machine-readable output.                                         |
+| `--help`          | `-h`  | Show usage.                                                      |
+| `--version`       | `-v`  | Show the installed version.                                      |
+
+### Scripting with `--json`
+
+```console
+$ agaza 2026-12-25 --json
+{
+  "isAgaza": true,
+  "date": "2026-12-25T00:00:00.000Z",
+  "nextAgaza": "2026-12-31T22:00:00.000Z",
+  "timeUntilAgaza": 597600000,
+  "timeZone": "Africa/Cairo"
+}
+```
+
+`date` and `nextAgaza` are ISO strings, and `timeUntilAgaza` is in milliseconds.
+
+A date argument is read as midnight UTC on that day (02:00–03:00 in Cairo). The answer is the same, but `timeUntilAgaza` is counted from that moment.
+
+**Exit codes:** `0` whenever the question was answered, whether or not it is agaza, and `1` for bad input (an invalid date, an unknown flag, an unsupported language). Errors go to stderr, so piping stdout always gives you clean output:
+
+```bash
+agaza --json > today.json   # only ever contains JSON
+```
+
 ## Notes
 
 - **Cairo time, always.** The day is decided by Cairo's calendar (`Africa/Cairo`), not by the machine's timezone, so a server in London or New York gives the same answer as one in Maadi.
@@ -90,7 +154,8 @@ nextAgaza().toLocaleString("en-EG", { timeZone: "Africa/Cairo" });
 - [x] `timeUntilAgaza()`: how much time is left until the next agaza
 - [x] `nextAgaza()`: the date when the next agaza starts
 - [x] Cairo timezone support
-- [ ] CLI: `npx @mostafaabbas/agaza`
+- [x] CLI: `npx @mostafaabbas/agaza`
+- [ ] Egyptian public holidays
 
 ## License
 

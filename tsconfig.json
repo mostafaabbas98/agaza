@@ -14,9 +14,13 @@
     "rootDir": "./src",
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2022"
+    "target": "es2022",
+    "types": ["node"],
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true
   },
   "files": [
-    "./src/index.ts"
+    "./src/index.ts",
+    "./src/cli.ts"
   ]
 }

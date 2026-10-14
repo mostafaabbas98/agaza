@@ -6,6 +6,7 @@
   "description": "Check if a date falls on the Egyptian weekend (Friday/Saturday)",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
+    "@types/node": "^20.19.43",
     "publint": "^0.3.24",
     "semantic-release": "^25.0.9",
     "typescript": "^7.0.2"
@@ -52,5 +53,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "bin": {
+    "agaza": "./lib/cli.js"
   }
 }
